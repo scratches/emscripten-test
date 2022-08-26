@@ -2,18 +2,12 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/ubuntu
 {
 	"name": "Ubuntu",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": { }
-	},
-	"runArgs": [
-		"-v",
-		"/nix"
-	],
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "dev",
+	"workspaceFolder": "/workspace",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {},
-
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [],
