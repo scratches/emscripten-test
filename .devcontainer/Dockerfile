@@ -14,7 +14,6 @@ VOLUME /nix
 VOLUME /home/${USER}/.cache
 
 RUN mkdir -pm 0755 /nix && chown ${USER_ID}:${USER_GID} /nix
-RUN setfacl -k /tmp
 
 USER ${USER_ID}:${USER_GID}
 RUN curl -L https://nixos.org/nix/install | sh
