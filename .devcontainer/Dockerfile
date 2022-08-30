@@ -4,7 +4,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends curl make unzip xz-utils
+    && apt-get -y install --no-install-recommends curl make unzip xz-utils acl
 
 ARG USER=vscode
 ARG USER_ID=1000
@@ -14,6 +14,7 @@ VOLUME /nix
 VOLUME /home/${USER}/.cache
 
 RUN mkdir -pm 0755 /nix && chown ${USER_ID}:${USER_GID} /nix
+RUN setfacl -k /tmp
 
 USER ${USER_ID}:${USER_GID}
 RUN curl -L https://nixos.org/nix/install | sh
